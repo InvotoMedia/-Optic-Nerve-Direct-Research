@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Optic Nerve Direct Research — Homepage Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --paper:#F7F5EF;
+    --navy:#0B1F3A;
+    --navy-2:#132C50;
+    --navy-light:#26466F;
+    --red:#A31621;
+    --red-dark:#7A0F18;
+    --ink:#1B1B1B;
+    --ink-soft:#4A4E57;
+    --line:#DCD8CC;
+    --gold:#B08D4C;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--white);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .display{font-family:'Spectral', serif;}
+  .mono{font-family:'IBM Plex Mono', monospace; letter-spacing:.06em; text-transform:uppercase;}
+
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+
+  /* ===== Classification stripe ===== */
+  .stripe{
+    background:var(--navy);
+    color:var(--white);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    display:flex;
+    justify-content:space-between;
+    padding:7px 32px;
+    border-bottom:3px solid var(--red);
+  }
+  .stripe span:last-child{color:#C7D3E3;}
+
+  /* ===== Header ===== */
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 32px;
+    border-bottom:1px solid var(--line);
+    background:var(--white);
+    position:relative;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .brand-mark{
+    width:44px; height:44px;
+    background:var(--navy);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .brand-mark::after{
+    content:"";
+    position:absolute;
+    width:14px; height:14px;
+    border:2px solid var(--red);
+    border-radius:50%;
+  }
+  .brand-mark::before{
+    content:"";
+    position:absolute;
+    width:2px; height:22px;
+    background:var(--red);
+  }
+  .brand-text .name{
+    font-family:'Spectral', serif;
+    font-weight:600;
+    font-size:19px;
+    color:var(--navy);
+    letter-spacing:.01em;
+  }
+  .brand-text .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    color:var(--red);
+  }
+  nav{
+    display:flex;
+    gap:34px;
+    align-items:center;
+    font-size:14.5px;
+    font-weight:600;
+    color:var(--navy);
+  }
+  nav a{
+    position:relative;
+    padding-bottom:4px;
+  }
+  nav a.premium::after{
+    content:"";
+    display:inline-block;
+    width:5px; height:5px;
+    background:var(--red);
+    border-radius:50%;
+    margin-left:6px;
+    vertical-align:middle;
+  }
+  .header-cta{
+    display:flex;
+    gap:12px;
+    align-items:center;
+  }
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    padding:11px 20px;
+    border:1px solid var(--navy);
+    color:var(--navy);
+    font-weight:600;
+    transition:all .15s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{background:var(--navy); color:var(--white);}
+  .btn-solid{
+    background:var(--red);
+    border:1px solid var(--red);
+    color:var(--white);
+  }
+  .btn-solid:hover{background:var(--red-dark); border-color:var(--red-dark);}
+
+  /* ===== Hero ===== */
+  .hero{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    min-height:560px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-left{
+    padding:76px 64px 60px 64px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--red);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:26px; height:1px;
+    background:var(--red);
+  }
+  .hero h1{
+    font-family:'Spectral', serif;
+    font-weight:600;
+    font-size:52px;
+    line-height:1.1;
+    color:var(--navy);
+    letter-spacing:-.01em;
+    max-width:600px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--red);
+    font-weight:500;
+  }
+  .hero p.lede{
+    margin-top:24px;
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:520px;
+    line-height:1.65;
+  }
+  .hero-actions{
+    display:flex;
+    gap:16px;
+    margin-top:38px;
+    align-items:center;
+  }
+  .link-inline{
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--navy);
+    border-bottom:1px solid var(--navy);
+    padding-bottom:2px;
+  }
+  .hero-stats{
+    display:flex;
+    gap:38px;
+    margin-top:56px;
+    padding-top:28px;
+    border-top:1px solid var(--line);
+    max-width:520px;
+  }
+  .hero-stats div .num{
+    font-family:'Spectral', serif;
+    font-size:26px;
+    font-weight:600;
+    color:var(--navy);
+  }
+  .hero-stats div .lbl{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-top:3px;
+  }
+
+  /* ===== Hero right: dossier visual ===== */
+  .hero-right{
+    background:var(--navy);
+    position:relative;
+    padding:48px 44px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .hero-right::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.035) 0px, rgba(255,255,255,0.035) 1px, transparent 1px, transparent 34px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.035) 0px, rgba(255,255,255,0.035) 1px, transparent 1px, transparent 34px);
+  }
+  .dossier-card{
+    position:relative;
+    background:var(--paper);
+    width:100%;
+    max-width:380px;
+    padding:30px 28px 26px 28px;
+    box-shadow:0 30px 60px rgba(0,0,0,.35);
+    transform:rotate(-1.4deg);
+  }
+  .dossier-card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:8px;
+    background:var(--red);
+  }
+  .stamp{
+    position:absolute;
+    top:22px; right:-14px;
+    border:2.5px solid var(--red);
+    color:var(--red);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    font-weight:600;
+    padding:5px 12px;
+    transform:rotate(8deg);
+    background:rgba(255,255,255,.85);
+  }
+  .dossier-card .file-no{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:.1em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    margin-top:10px;
+  }
+  .dossier-card h3{
+    font-family:'Spectral', serif;
+    font-size:22px;
+    color:var(--navy);
+    margin-top:10px;
+    line-height:1.25;
+  }
+  .dossier-card p{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin-top:12px;
+    line-height:1.6;
+  }
+  .redacted-lines{margin-top:16px; display:flex; flex-direction:column; gap:7px;}
+  .redacted-lines span{
+    display:block;
+    height:9px;
+    background:#111;
+    opacity:.85;
+  }
+  .redacted-lines span:nth-child(1){width:92%;}
+  .redacted-lines span:nth-child(2){width:74%;}
+  .redacted-lines span:nth-child(3){width:83%;}
+
+  /* ===== Section shell ===== */
+  section{padding:88px 64px;}
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:48px;
+    gap:32px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:26px;
+  }
+  .section-head h2{
+    font-family:'Spectral', serif;
+    font-size:34px;
+    color:var(--navy);
+    font-weight:600;
+  }
+  .section-head p{
+    max-width:380px;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    text-align:right;
+  }
+
+  /* ===== Categories ===== */
+  .cat-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .cat-card{
+    background:var(--white);
+    padding:34px 26px;
+    transition:background .15s ease;
+    position:relative;
+  }
+  .cat-card:hover{background:var(--paper);}
+  .cat-card .cat-index{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--red);
+    letter-spacing:.1em;
+  }
+  .cat-card h3{
+    font-family:'Spectral', serif;
+    font-size:19px;
+    color:var(--navy);
+    margin-top:14px;
+    line-height:1.3;
+  }
+  .cat-card p{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-top:10px;
+    line-height:1.55;
+  }
+  .cat-card .count{
+    margin-top:20px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--navy-light);
+    border-top:1px solid var(--line);
+    padding-top:14px;
+    display:block;
+  }
+
+  /* ===== Chapters ===== */
+  .chapters-wrap{background:var(--paper); margin:0 -64px; padding:88px 64px;}
+  .chapter-list{display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line);}
+  .chapter-row{
+    background:var(--white);
+    display:grid;
+    grid-template-columns:70px 1fr 150px 130px;
+    align-items:center;
+    padding:22px 26px;
+    gap:20px;
+  }
+  .chapter-row .ch-no{
+    font-family:'Spectral', serif;
+    font-size:26px;
+    color:var(--line);
+    font-weight:600;
+  }
+  .chapter-row .ch-info .ch-cat{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--red);
+  }
+  .chapter-row .ch-info h4{
+    font-family:'Spectral', serif;
+    font-size:18px;
+    color:var(--navy);
+    margin-top:5px;
+  }
+  .chapter-row .ch-info p{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-top:5px;
+  }
+  .lock-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    padding:6px 10px;
+    text-align:center;
+    border:1px solid var(--navy);
+    color:var(--navy);
+  }
+  .lock-tag.locked{border-color:var(--red); color:var(--red); background:#FBEDEC;}
+  .lock-tag.free{border-color:var(--navy-light); color:var(--navy-light); background:#EEF2F7;}
+  .ch-cta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--navy);
+    font-weight:600;
+    justify-self:end;
+  }
+
+  /* ===== Membership ===== */
+  .tier-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .tier-card{
+    border:1px solid var(--line);
+    padding:38px 30px;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+  }
+  .tier-card.featured{
+    border-color:var(--navy);
+    background:var(--navy);
+    color:var(--white);
+  }
+  .tier-rank{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--red);
+  }
+  .tier-card.featured .tier-rank{color:#F0A5A5;}
+  .tier-card h3{
+    font-family:'Spectral', serif;
+    font-size:24px;
+    margin-top:10px;
+    color:var(--navy);
+  }
+  .tier-card.featured h3{color:var(--white);}
+  .tier-price{
+    font-family:'Spectral', serif;
+    font-size:38px;
+    font-weight:600;
+    margin-top:18px;
+    color:var(--navy);
+  }
+  .tier-card.featured .tier-price{color:var(--white);}
+  .tier-price span{
+    font-family:'Source Sans 3', sans-serif;
+    font-size:13px;
+    color:var(--ink-soft);
+    font-weight:400;
+  }
+  .tier-card.featured .tier-price span{color:#B7C4D8;}
+  .tier-list{
+    margin-top:26px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    flex-grow:1;
+  }
+  .tier-list div{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+  }
+  .tier-card.featured .tier-list div{color:#D3DCE9;}
+  .tier-list div::before{
+    content:"—";
+    color:var(--red);
+    flex-shrink:0;
+  }
+  .tier-btn{
+    margin-top:28px;
+    text-align:center;
+    padding:13px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    font-weight:600;
+    border:1px solid var(--navy);
+    color:var(--navy);
+  }
+  .tier-card.featured .tier-btn{
+    background:var(--red);
+    border-color:var(--red);
+    color:var(--white);
+  }
+
+  /* ===== Lead capture ===== */
+  .lead-strip{
+    background:var(--navy);
+    color:var(--white);
+    padding:70px 64px;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:60px;
+    align-items:center;
+  }
+  .lead-strip h2{
+    font-family:'Spectral', serif;
+    font-size:32px;
+    line-height:1.25;
+  }
+  .lead-strip h2 em{color:#E39494; font-style:italic;}
+  .lead-strip p{
+    margin-top:16px;
+    font-size:14.5px;
+    color:#C7D3E3;
+    max-width:440px;
+  }
+  .lead-form{
+    display:flex;
+    gap:0;
+    border:1px solid rgba(255,255,255,.3);
+  }
+  .lead-form input{
+    flex:1;
+    background:transparent;
+    border:none;
+    padding:16px 18px;
+    color:var(--white);
+    font-size:14px;
+    font-family:'Source Sans 3', sans-serif;
+  }
+  .lead-form input::placeholder{color:#8FA0BC;}
+  .lead-form button{
+    background:var(--red);
+    color:var(--white);
+    border:none;
+    padding:0 26px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .lead-note{
+    margin-top:12px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:.06em;
+    color:#7C8CA8;
+  }
+
+  /* ===== Footer ===== */
+  footer{
+    padding:56px 64px 30px 64px;
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:40px;
+    border-top:1px solid var(--line);
+  }
+  footer .brand-text .name{font-size:17px;}
+  footer p.about{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-top:14px;
+    max-width:280px;
+    line-height:1.6;
+  }
+  footer h5{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--navy);
+    margin-bottom:16px;
+  }
+  footer ul{list-style:none; display:flex; flex-direction:column; gap:10px;}
+  footer ul a{font-size:13.5px; color:var(--ink-soft);}
+  footer ul a:hover{color:var(--red);}
+  .footer-base{
+    grid-column:1/-1;
+    margin-top:30px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    color:var(--ink-soft);
+    letter-spacing:.05em;
+  }
+
+  @media (max-width:1080px){
+    .hero{grid-template-columns:1fr;}
+    .cat-grid{grid-template-columns:repeat(2,1fr);}
+    .tier-grid{grid-template-columns:1fr;}
+    .lead-strip{grid-template-columns:1fr;}
+    .chapter-row{grid-template-columns:50px 1fr; row-gap:8px;}
+    .chapter-row .lock-tag, .chapter-row .ch-cta{justify-self:start;}
+    footer{grid-template-columns:1fr 1fr;}
+    section{padding:64px 28px;}
+    header{padding:18px 28px;}
+    .chapters-wrap{margin:0 -28px; padding:64px 28px;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="stripe">
+    <span>Optic Nerve Direct Research · Est. Archive of Military Analysis</span>
+    <span>Graduate-Level Sourcing · Peer-Referenced</span>
+  </div>
+
+  <header>
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div class="brand-text">
+        <div class="name">Optic Nerve Direct Research</div>
+        <div class="tag">Military History &amp; War Theory</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#">Research Categories</a>
+      <a href="#" class="premium">Chapters</a>
+      <a href="#">Membership</a>
+      <a href="#">Forum</a>
+      <a href="#">About</a>
+    </nav>
+    <div class="header-cta">
+      <a href="#" class="btn">Sign In</a>
+      <a href="#" class="btn btn-solid">Join Officer Tier</a>
+    </div>
+  </header>
+
+  <section class="hero" style="padding:0;">
+    <div class="hero-left">
+      <div class="eyebrow">Field Reference · Vol. IV</div>
+      <h1 class="display">Primary-source military history, <em>filed and cross-referenced.</em></h1>
+      <p class="lede">Optic Nerve Direct Research builds graduate-grade case studies on colonial warfare, the World Wars, and the theory of conflict — organized as chapters, not blog posts, so serious readers can cite them with confidence.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-solid">Browse Chapters</a>
+        <a href="#" class="link-inline">See how membership works →</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="num">140+</div><div class="lbl">Sourced Chapters</div></div>
+        <div><div class="num">6</div><div class="lbl">Research Theatres</div></div>
+        <div><div class="num">1,900+</div><div class="lbl">Citations Indexed</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="dossier-card">
+        <div class="stamp">Members Only</div>
+        <div class="file-no">File No. WWII–PAC–014</div>
+        <h3 class="display">Logistics in the Pacific Theater</h3>
+        <p>An examination of Allied supply-chain doctrine across the island-hopping campaign, 1943–1945.</p>
+        <div class="redacted-lines">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2 class="display">Research Categories</h2>
+      <p>Every chapter is filed under a theatre or discipline, so readers can move from overview to primary analysis without losing the thread.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <div class="cat-index">Cat. 01</div>
+        <h3 class="display">Colonial Wars</h3>
+        <p>Irregular warfare, imperial logistics, and the origins of modern counterinsurgency.</p>
+        <span class="count">22 Chapters</span>
+      </div>
+      <div class="cat-card">
+        <div class="cat-index">Cat. 02</div>
+        <h3 class="display">The Great War</h3>
+        <p>Trench doctrine, industrial mobilization, and the collapse of 19th-century strategy.</p>
+        <span class="count">31 Chapters</span>
+      </div>
+      <div class="cat-card">
+        <div class="cat-index">Cat. 03</div>
+        <h3 class="display">World War II</h3>
+        <p>European and Pacific theatres, from combined-arms doctrine to occupation policy.</p>
+        <span class="count">48 Chapters</span>
+      </div>
+      <div class="cat-card">
+        <div class="cat-index">Cat. 04</div>
+        <h3 class="display">War Theory</h3>
+        <p>Clausewitz to Colin Gray — the intellectual architecture behind military decision-making.</p>
+        <span class="count">19 Chapters</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="chapters-wrap">
+    <div class="section-head" style="border-color:var(--line);">
+      <h2 class="display">Latest Chapters</h2>
+      <p>Preview any chapter free. Full text, citations, and downloadable PDFs are reserved for Officer and General Staff members.</p>
+    </div>
+    <div class="chapter-list">
+      <div class="chapter-row">
+        <div class="ch-no display">01</div>
+        <div class="ch-info">
+          <div class="ch-cat">War Theory</div>
+          <h4 class="display">From Clausewitz to Colin Gray</h4>
+          <p>Tracing the evolution of strategic theory across two centuries of conflict.</p>
+        </div>
+        <div class="lock-tag locked">Members Only</div>
+        <div class="ch-cta">Read Preview →</div>
+      </div>
+      <div class="chapter-row">
+        <div class="ch-no display">02</div>
+        <div class="ch-info">
+          <div class="ch-cat">World War II</div>
+          <h4 class="display">Logistics in the Pacific Theater</h4>
+          <p>Supply-chain doctrine across the island-hopping campaign, 1943–1945.</p>
+        </div>
+        <div class="lock-tag locked">Members Only</div>
+        <div class="ch-cta">Read Preview →</div>
+      </div>
+      <div class="chapter-row">
+        <div class="ch-no display">03</div>
+        <div class="ch-info">
+          <div class="ch-cat">Colonial Wars</div>
+          <h4 class="display">Origins of Colonial Irregular Warfare</h4>
+          <p>How 19th-century imperial campaigns shaped modern counterinsurgency doctrine.</p>
+        </div>
+        <div class="lock-tag free">Free Preview</div>
+        <div class="ch-cta">Read Chapter →</div>
+      </div>
+      <div class="chapter-row">
+        <div class="ch-no display">04</div>
+        <div class="ch-info">
+          <div class="ch-cat">The Great War</div>
+          <h4 class="display">Industrial Mobilization, 1914–1918</h4>
+          <p>The economics behind sustained trench warfare and total war footing.</p>
+        </div>
+        <div class="lock-tag locked">Members Only</div>
+        <div class="ch-cta">Read Preview →</div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-head">
+      <h2 class="display">Membership</h2>
+      <p>Three tiers, from free previews to full research access — priced for students and independent researchers alike.</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier-card">
+        <div class="tier-rank">Rank 01</div>
+        <h3 class="display">Enlisted</h3>
+        <div class="tier-price">Free</div>
+        <div class="tier-list">
+          <div>Chapter previews across all theatres</div>
+          <div>Access to core resource pages</div>
+          <div>Monthly research newsletter</div>
+        </div>
+        <a href="#" class="tier-btn">Create Free Account</a>
+      </div>
+      <div class="tier-card featured">
+        <div class="tier-rank">Rank 02 · Most Popular</div>
+        <h3 class="display">Officer</h3>
+        <div class="tier-price">$7 <span>/ month</span></div>
+        <div class="tier-list">
+          <div>Full access to every chapter</div>
+          <div>Downloadable PDFs with citations</div>
+          <div>Researcher's Notes on each entry</div>
+          <div>Access to the members' forum</div>
+        </div>
+        <a href="#" class="tier-btn">Join Officer Tier</a>
+      </div>
+      <div class="tier-card">
+        <div class="tier-rank">Rank 03</div>
+        <h3 class="display">General Staff</h3>
+        <div class="tier-price">$150 <span>lifetime</span></div>
+        <div class="tier-list">
+          <div>Everything in Officer, permanently</div>
+          <div>Early access to new chapters</div>
+          <div>Exclusive long-form case studies</div>
+          <div>Quarterly research Q&amp;A sessions</div>
+        </div>
+        <a href="#" class="tier-btn">Become General Staff</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="lead-strip">
+    <div>
+      <h2 class="display">Get one new chapter <em>before</em> it's published.</h2>
+      <p>Join the research list for early previews, source notes, and a monthly digest of what's being filed next.</p>
+    </div>
+    <div>
+      <div class="lead-form">
+        <input type="email" placeholder="you@university.edu">
+        <button>Subscribe</button>
+      </div>
+      <div class="lead-note">No spam. Unsubscribe anytime. ~1 email / month.</div>
+    </div>
+  </div>
+
+  <footer>
+    <div>
+      <div class="brand-text"><div class="name display">Optic Nerve Direct Research</div></div>
+      <p class="about">A research-driven archive of military history and war theory, built for graduate students, historians, and serious enthusiasts of conflict studies.</p>
+    </div>
+    <div>
+      <h5>Research</h5>
+      <ul>
+        <li><a href="#">Colonial Wars</a></li>
+        <li><a href="#">The Great War</a></li>
+        <li><a href="#">World War II</a></li>
+        <li><a href="#">War Theory</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Platform</h5>
+      <ul>
+        <li><a href="#">Chapters</a></li>
+        <li><a href="#">Membership</a></li>
+        <li><a href="#">Forum</a></li>
+        <li><a href="#">Start Here</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>About</h5>
+      <ul>
+        <li><a href="#">The Author</a></li>
+        <li><a href="#">Methodology</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 Optic Nerve Direct Research</span>
+      <span>Homepage Concept · V1</span>
+    </div>
+  </footer>
+
+</body>
+</html>
